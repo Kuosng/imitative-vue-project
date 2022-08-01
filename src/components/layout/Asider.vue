@@ -7,6 +7,7 @@
           :key="item.path"
           v-if="item.meta && item.meta.hidden !== true && !item.children"
         >
+          <i :class="item.icon"></i>
           <span>{{ item.meta.label }}</span>
         </el-menu-item>
         <el-submenu
@@ -15,6 +16,7 @@
           v-else-if="item.meta && item.meta.hidden !== true && item.children"
         >
           <template slot="title">
+            <i :class="item.icon"></i>
             <span>{{ item.meta.label }}</span>
           </template>
           <el-menu-item-group>
@@ -32,7 +34,7 @@
 </template>
 
 <script>
-import { routes } from "@/router";
+import routes from "@/router/routes";
 
 export default {
   data() {

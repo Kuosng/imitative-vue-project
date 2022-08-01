@@ -1,29 +1,6 @@
 <template>
   <div class="basic-table">
-    <el-form :inline="true" :model="formData" class="demo-form-inline">
-      <el-form-item label="name">
-        <el-input v-model="formData.user" placeholder="请输入name"></el-input>
-      </el-form-item>
-      <el-form-item label="type">
-        <el-select v-model="formData.region" placeholder="请选择">
-          <el-option label="A" value="1"></el-option>
-          <el-option label="B" value="2"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="date">
-        <el-date-picker
-          v-model="formData.date"
-          type="daterange"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-        >
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="handleSubmit">查询</el-button>
-      </el-form-item>
-    </el-form>
+    <column-select :checks="option" @checkChange="handleChange" />
     <el-table
       ref="multipleTable"
       :data="tableData"
@@ -56,7 +33,18 @@
 </template>
 
 <script>
+import ColumnSelect from "./ColumnSelect";
+
+const option = {
+  video: { label: "video", isShow: true },
+  name: { label: "name", isShow: true },
+  type: { label: "type", isShow: true },
+  date: { label: "date", isShow: true },
+};
 export default {
+  components: {
+    ColumnSelect,
+  },
   data() {
     return {
       formData: {
@@ -64,6 +52,7 @@ export default {
         region: "",
         date: "",
       },
+      option,
       tableData: [
         {
           imgPath: "@/assets/logo.png",
@@ -77,6 +66,10 @@ export default {
   },
 
   methods: {
+    handleChange(val) {
+      console.log(val);
+      console.log(this.$refs.multipleTable, 1);
+    },
     handleSubmit() {
       console.log(this.formData, 111);
     },

@@ -36,7 +36,8 @@ import {
   TimePicker,
   DatePicker,
   Checkbox,
-  menuItemGroup
+  MenuItemGroup,
+  CheckboxGroup
 } from "element-ui";
 
 Vue.use(Button);
@@ -72,7 +73,8 @@ Vue.use(TabPane);
 Vue.use(TimePicker);
 Vue.use(DatePicker);
 Vue.use(Checkbox);
-Vue.use(menuItemGroup);
+Vue.use(MenuItemGroup);
+Vue.use(CheckboxGroup);
 
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox.confirm;

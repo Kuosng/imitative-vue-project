@@ -15,7 +15,7 @@
       </el-form-item>
       <el-form-item prop="pass">
         <el-input :type="isView ? 'text' : 'password'" v-model="ruleForm.pass">
-          <i class="el-icon-lock" slot="prefix"> </i>
+          <i class="el-icon-lock" slot="prefix"></i>
           <i
             :class="isView ? 'el-icon-view' : 'el-icon-more'"
             slot="suffix"
@@ -58,6 +58,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
+          localStorage.setItem("token", "token");
           this.$router.push("/home");
         } else {
           console.log("error submit!!");

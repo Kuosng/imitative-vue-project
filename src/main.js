@@ -12,6 +12,25 @@ Vue.prototype.$echarts = echarts; // 书写习惯，vue 原型属性带$
 
 Vue.config.productionTip = false;
 
+// 前置路由守卫
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem("token");
+
+  if (token && to.path !== "/login") {
+    if (to.path === "/") {
+      next({ path: "/home" });
+    } else {
+      next();
+    }
+  } else {
+    if (to.path === "/login") {
+      next();
+      return;
+    }
+    next({ path: "/login" });
+  }
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: "#app",

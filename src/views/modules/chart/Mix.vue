@@ -18,7 +18,7 @@ export default {
     initEcharts() {
       const option = {
         title: {
-          text: "折线图",
+          text: "混合图表",
           textStyle: {
             fontSize: "16px",
           },
@@ -37,32 +37,26 @@ export default {
           renderMode: "html", // 浮层的渲染模式，默认以 'html 即额外的 DOM 节点展示 tooltip；
           // formatter: '{b} 的成绩是 {c}'
           formatter: function (arg) {
-            return `${arg[0].name}</br>${arg[0].seriesName}：${arg[0].data[1]}</br>${arg[1].seriesName}：${arg[1].data[2]}</br>${arg[2].seriesName}：${arg[2].data[3]}`;
+            return `${arg[0].name}</br>${arg[0].seriesName}：${arg[0].data[1]}</br>${arg[1].seriesName}：${arg[1].data[2]}`;
           },
         },
         dataset: {
-          dimensions: ["product", "A", "B", "C"],
+          dimensions: ["product", "A", "B"],
           source: [
-            ["2017", 78, 69, 45],
-            ["2018", 32, 89, 12],
-            ["2019", 60, 15, 52],
-            ["2020", 11, 38, 12],
-            ["2021", 31, 78, 32],
-            ["2022", 51, 18, 62],
+            ["2017", 78, 69],
+            ["2018", 32, 89],
+            ["2019", 60, 15],
+            ["2020", 11, 38],
+            ["2021", 31, 78],
+            ["2022", 51, 18],
           ],
         },
         series: [
           {
             type: "line",
-            smooth: true,
           },
           {
-            type: "line",
-            smooth: true,
-          },
-          {
-            type: "line",
-            smooth: true,
+            type: "bar",
           },
         ],
         xAxis: { type: "category" },
